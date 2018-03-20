@@ -4,9 +4,9 @@
 #include <QtCore/qglobal.h>
 
 #if defined(RGQTCORE_LIBRARY)
-#  define RGQTCORESHARED_EXPORT Q_DECL_EXPORT
+#  define RGQTCORE  Q_DECL_EXPORT
 #else
-#  define RGQTCORESHARED_EXPORT Q_DECL_IMPORT
+#  define RGQTCORE  Q_DECL_IMPORT
 #endif
 
 #endif // RGQTCORE_GLOBAL_H
