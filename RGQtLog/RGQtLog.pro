@@ -23,11 +23,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        rgqtlog.cpp
+        rgqtlog.cpp \
+    rgqtlogfactory.cpp
 
 HEADERS += \
         rgqtlog.h \
-        rgqtlog_global.h 
+        rgqtlog_global.h \ 
+    rgqtlogfactory.h
 
 unix {
     target.path = /usr/lib

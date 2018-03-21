@@ -3,6 +3,7 @@
 
 #include "rgqtcore_global.h"
 
+
 #define DECLARE_CLASS(Class) \
     class Class; \
     class Class##Private;

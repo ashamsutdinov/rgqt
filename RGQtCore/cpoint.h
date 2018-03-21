@@ -43,7 +43,6 @@ public:
         return _CPoint<T>(-c1_, -c2_, -c3_);
     }
 
-
 public:
     const T& C1() const
     {
@@ -69,7 +68,6 @@ public:
     {
         return isValid_;
     }
-
 
 public:
     static T Norm(const T& c1, const T& c2, const T& c3)
@@ -102,6 +100,7 @@ public:
         return val;
     }
 };
+
 
 typedef _CPoint<double> CPoint;
 

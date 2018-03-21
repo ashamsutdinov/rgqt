@@ -4,12 +4,21 @@
 #include "rgqtlog_global.h"
 
 
+enum RGQTLOG LogSeverity
+{
+    TRACE,
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR
+};
+
 
 class RGQTLOG RGQtLog
 {
-
-public:
+protected:
     RGQtLog();
 };
+
 
 #endif // RGQTLOG_H
