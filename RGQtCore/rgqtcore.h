@@ -1,6 +1,11 @@
 #ifndef RGQTCORE_H
 #define RGQTCORE_H
 
+#include <QString>
+#include <QDebug>
+#include <QtMath>
+#include <math.h>
+
 #include "rgqtcore_global.h"
 
 

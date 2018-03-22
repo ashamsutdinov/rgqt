@@ -14,10 +14,19 @@ enum RGQTLOG LogSeverity
 };
 
 
-class RGQTLOG RGQtLog
+class RGQTLOG RGQtLog :
+        public QObject
 {
+    Q_OBJECT
+
 protected:
-    RGQtLog();
+    explicit RGQtLog(QObject* parent = nullptr);
+
+signals:
+    void Message(const QString& message, const LogSeverity& severity);
+
+public slots:
+    void OnMessage(const QString& message, const LogSeverity& severity);
 };
 
 
