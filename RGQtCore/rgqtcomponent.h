@@ -5,9 +5,20 @@
 
 
 enum RGQTCORE ComponentState :
-        int64_t
+        FLAGS
 {
-
+    Undefined   = BIT_ZERO,
+    Ready       = BIT_0,
+    Starting    = BIT_1,
+    Started     = BIT_2,
+    Pausing     = BIT_3,
+    Paused      = BIT_4,
+    Stopping    = BIT_5,
+    Stopped     = BIT_6,
+    Recovering  = BIT_7,
+    Recovered   = BIT_8,
+    Locked      = BIT_9,
+    Failed      = BIT_10
 };
 
 
@@ -20,6 +31,7 @@ class RGQTCORE RGQtComponentPrivate :
 
 private:
     QString _name;
+    FLAGS   _state;
 
 public:
     explicit RGQtComponentPrivate(const QString& name, RGQtComponent* pComponent);
