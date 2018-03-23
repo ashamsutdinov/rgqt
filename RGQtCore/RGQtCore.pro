@@ -34,13 +34,15 @@ HEADERS += \
     rgqtcore_global.h \
     rgqtcore.h \
     rgqtobject.h \
-    rgqtcomponent.h
+    rgqtcomponent.h \
+    rgqtlog.h
 
 
 # Sources
 SOURCES += \
     rgqtobject.cpp \
-    rgqtcomponent.cpp
+    rgqtcomponent.cpp \
+    rgqtlog.cpp
 
 
 # Unix-specific stuff

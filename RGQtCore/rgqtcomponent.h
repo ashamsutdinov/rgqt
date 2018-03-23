@@ -4,8 +4,14 @@
 #include "rgqtobject.h"
 
 
-DECLARE(RGQtComponent)
+enum RGQTCORE ComponentState :
+        int64_t
+{
 
+};
+
+
+DECLARE(RGQtComponent)
 
 class RGQTCORE RGQtComponentPrivate :
         public RGQtObjectPrivate
