@@ -1,7 +1,20 @@
 #include "rgqtobject.h"
 
-RGQtObject::RGQtObject(QObject* parent) :
-    QObject(parent)
+RGQtObjectPrivate::RGQtObjectPrivate(RGQtObject* obj) :
+    _qPtr(obj)
+{
+
+}
+
+
+RGQtObject::RGQtObject(RGQtObjectPrivate* pimpl, QObject* parent) :
+    QObject(parent),
+    _dPtr(pimpl)
+{
+
+}
+
+RGQtObject::~RGQtObject()
 {
 
 }
