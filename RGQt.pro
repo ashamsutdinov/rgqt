@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     RGQtCore \
-    RGQtMath
+    RGQtMath \
+    RGQtNetwork
