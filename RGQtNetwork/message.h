@@ -39,11 +39,11 @@
  *  byte 3 (H1.3)   :   reserved
  *
  *
- * Private header (H2, 8 to 44+ bytes, encrypted if H1.2.1 == 1)
+ * Private header (H2, 8 to 48+ bytes, encrypted if H1.2.1 == 1)
  *  byte 0 (H2.0)           :   message type (0 to 255)
- *  bytes 1 to 2 (H2.1-2)   :   message sub-type (0 to 65536)
- *  byte 3 (H2.3)   :   flags
- *      0   :   1 = has session ID
+ *  byte 1 (H2.1)   :   message sub-type (0 to 255)
+ *  byte 2 (H2.2)   :   flags - bit mask
+ *      0   :   1 = has session data
  *      1   :   1 = has message ID
  *      2   :   1 = has reference message ID
  *      3   :   1 = has send time
@@ -51,19 +51,21 @@
  *      5   :   1 = partial content
  *      6   :   1 = has extra flags
  *      7   :   1 = has metadata
+ *  bute 3 (H2.3)   :   reserved
  *  bytes 4-8 (H2.4-7)  :   payload size
- *  [optional] next 4 bytes (H2.8-11)   :   session ID
- *  [optional] next 4 bytes (H2.12-15)  :   message ID (if H2.3.0 == 1, unique within session on sender side)
- *  [optional] next 4 bytes (H2.16-19)  :   reference message ID (if H2.3.1 == 1)
- *  [optional] next 8 bytes (H2.20-27)  :   send time (if H2.3.2 == 1, ticks)
- *  [optional] next 4 bytes (H2.28-31)  :   session time (if H2.3.3 == 1, seconds since session start)
- *  [optional] next 2 bytes (H2.32-33)  :   encryption algorythm (if H1.2.2 == 1)
- *  [optional] next 2 bytes (H2.34-35)  :   encryption flags (if H1.2.2 == 1)
- *  [optional] next 2 bytes (H2.36-37)  :   compression algorythm (if H1.2.3 == 1)
- *  [optional] next 2 bytes (H2.38-39)  :   compression flags (if H1.2.3 == 1)
- *  [optional] next 2 bytes (H2.40-41)  :   extra flags (if H1.2.7 == 1)
- *  [optional] next 2 bytes (H2.42-43)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
- *  [optional] next 4 to 65536 bytes (H2.44-*)  :   metadata (if H1.2.8 == 1, min 4 max 65536 bytes)
+ *  [optional] next 4 bytes (H2.8-11)   :   session ID (if H2.2.0 == 1)
+ *  [optional] next 4 bytes (H2.12-15)  :   session token (if H2.2.0 == 1)
+ *  [optional] next 4 bytes (H2.16-19)  :   message ID (if H2.3.0 == 1, unique within session on sender side)
+ *  [optional] next 4 bytes (H2.20-23)  :   reference message ID (if H2.3.1 == 1)
+ *  [optional] next 8 bytes (H2.24-31)  :   send time (if H2.3.2 == 1, ticks)
+ *  [optional] next 4 bytes (H2.32-35)  :   session time (if H2.3.3 == 1, seconds since session start)
+ *  [optional] next 2 bytes (H2.36-37)  :   encryption algorythm (if H1.2.2 == 1)
+ *  [optional] next 2 bytes (H2.38-39)  :   encryption flags (if H1.2.2 == 1)
+ *  [optional] next 2 bytes (H2.40-41)  :   compression algorythm (if H1.2.3 == 1)
+ *  [optional] next 2 bytes (H2.42-43)  :   compression flags (if H1.2.3 == 1)
+ *  [optional] next 2 bytes (H2.44-45)  :   extra flags (if H1.2.7 == 1)
+ *  [optional] next 2 bytes (H2.46-47)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
+ *  [optional] next 4 to 65536 bytes (H2.48-*)  :   metadata (if H1.2.8 == 1, min 4 max 65536 bytes)
  *
  *
  * Payload data (PL, 0 to [H2.4-7] bytes):
