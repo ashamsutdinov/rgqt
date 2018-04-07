@@ -27,8 +27,8 @@ struct RGQTNETWORK MessageFooter
     byte    Suffix;
 };
 
-typedef MessageFooter* _PMessageFooter;
-typedef std::unique_ptr<MessageFooter> PMessageFooter;
+typedef MessageFooter*                  _PMessageFooter;
+typedef std::unique_ptr<MessageFooter>  PMessageFooter;
 
 
 extern RGQTNETWORK MessageFooter gEmptyMessageFooter;

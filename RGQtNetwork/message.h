@@ -21,12 +21,12 @@
  * Message structure:
  *
  *
- * Public header (H1, always 12 bytes):
+ * Public header (H1, 4 bytes):
  *  byte 0 (H1.0)   :   prefix (constant, 0xFF)
  *
  *  byte 1 (H1.1)   :   protocol version (0 to 255)
  *
- *  byte 2 (H1.2)   :   public flags - bit mask
+ *  byte 2 (H1.2)   :   flags - bit mask
  *      0   :   1 = session message, 0 = application message
  *      1   :   1 = header encrypted, 0 = header not encrypted
  *      2   :   1 = payload encrypted, 0 = payload not encrypted
@@ -38,10 +38,8 @@
  *
  *  byte 3 (H1.3)   :   reserved
  *
- *  byte 4 (H1.4)   :   reserved
  *
- *
- * Private header (H2, encrypted if H1.2.1 == 1)
+ * Private header (H2, 8 to 44+ bytes, encrypted if H1.2.1 == 1)
  *  byte 0 (H2.0)           :   message type (0 to 255)
  *  bytes 1 to 2 (H2.1-2)   :   message sub-type (0 to 65536)
  *  byte 3 (H2.3)   :   flags
@@ -63,9 +61,9 @@
  *  [optional] next 2 bytes (H2.34-35)  :   encryption flags (if H1.2.2 == 1)
  *  [optional] next 2 bytes (H2.36-37)  :   compression algorythm (if H1.2.3 == 1)
  *  [optional] next 2 bytes (H2.38-39)  :   compression flags (if H1.2.3 == 1)
- *  [optional] next 2 bytes (H2.40-42)  :   extra flags (if H1.2.7 == 1)
- *  [optional] next 2 bytes (H2.43-44)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
- *  [optional] next 4 to 65536 bytes (H2.46-*)  :   metadata (if H1.2.8 == 1, min 4 max 65536 bytes)
+ *  [optional] next 2 bytes (H2.40-41)  :   extra flags (if H1.2.7 == 1)
+ *  [optional] next 2 bytes (H2.42-43)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
+ *  [optional] next 4 to 65536 bytes (H2.44-*)  :   metadata (if H1.2.8 == 1, min 4 max 65536 bytes)
  *
  *
  * Payload data (PL, 0 to [H2.4-7] bytes):

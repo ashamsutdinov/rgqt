@@ -34,12 +34,15 @@ HEADERS += \
     messageheader.h \
     message.h \
     messagepayload.h \
-    messagefooter.h
+    messagefooter.h \
+    publicmessageheader.h \
+    privatemessageheader.h
 
 
 # Sources
 SOURCES += \
-    messagefooter.cpp
+    messagefooter.cpp \
+    publicmessageheader.cpp
 
 
 # Unix-specific stuff
