@@ -37,13 +37,15 @@ HEADERS += \
     messagefooter.h \
     publicmessageheader.h \
     privatemessageheader.h \
-    protocolversion.h
+    protocolversion.h \
+    io.h
 
 
 # Sources
 SOURCES += \
     messagefooter.cpp \
-    publicmessageheader.cpp
+    publicmessageheader.cpp \
+    io.cpp
 
 
 # Unix-specific stuff

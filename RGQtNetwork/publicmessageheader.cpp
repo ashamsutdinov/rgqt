@@ -1,4 +1,5 @@
 #include "publicmessageheader.h"
+#include "io.h"
 
 
 PublicMessageHeader gEmptyPublicMessageHeader ={
@@ -9,11 +10,6 @@ PublicMessageHeader gEmptyPublicMessageHeader ={
 };
 
 
-/*
+template RGQTNETWORK void ReadObject<PublicMessageHeader>(PBuffer, BufferSize, PublicMessageHeader&);
 
-    bool isAppMessage() const;
-    bool isSessionMessage() const;
-    bool isHeaderEncrypted() const;
-    bool isPayloadEncrypted() const;
-    bool isPayloadCompressed() const;
- * */
+template RGQTNETWORK PublicMessageHeader ReadObject<PublicMessageHeader>(PBuffer, BufferSize);
