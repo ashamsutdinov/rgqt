@@ -1,8 +1,8 @@
-#ifndef MESSAGEPAYLOAD_H
-#define MESSAGEPAYLOAD_H
+#ifndef MESSAGETYPES_H
+#define MESSAGETYPES_H
 
 /*
- * RGQt Message Payload definition
+ * RGQt MessageTypes definition
  *
  * Created: 2018-03-20
  * Last update: 2018-03-20 by ashamsutdinov
@@ -14,4 +14,4 @@
  * */
 
 
-#endif // MESSAGEPAYLOAD_H
+#endif // MESSAGETYPES_H

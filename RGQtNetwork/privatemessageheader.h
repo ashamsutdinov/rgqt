@@ -15,6 +15,8 @@
 
 
 #include "rgqtnetwork_global.h"
+#include "messagetypes.h"
+#include "messagesubtypes.h"
 
 
 struct RGQTNETWORK PrivateMessageHeader

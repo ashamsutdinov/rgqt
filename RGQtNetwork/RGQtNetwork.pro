@@ -38,7 +38,9 @@ HEADERS += \
     publicmessageheader.h \
     privatemessageheader.h \
     protocolversion.h \
-    io.h
+    io.h \
+    messagetypes.h \
+    messagesubtypes.h
 
 
 # Sources
