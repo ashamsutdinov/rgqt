@@ -22,12 +22,16 @@
 struct RGQTNETWORK MessageFooter
 {
     byte    Checksum;
+
     byte    Reserved1;
+
     byte    Reserved2;
+
     byte    Suffix;
 };
 
 typedef MessageFooter*                  _PMessageFooter;
+typedef MessageFooter&                  RMessageFooter;
 typedef std::unique_ptr<MessageFooter>  PMessageFooter;
 
 

@@ -27,7 +27,7 @@
  *  byte 1 (H1.1)   :   protocol version (0 to 255)
  *
  *  byte 2 (H1.2)   :   flags - bit mask
- *      0   :   1 = session message, 0 = application message
+ *      0   :   1 = app message, 0 = session message
  *      1   :   1 = header encrypted, 0 = header not encrypted
  *      2   :   1 = payload encrypted, 0 = payload not encrypted
  *      3   :   1 = payload compressed, 0 = payload not compressed
@@ -78,7 +78,10 @@
  *
  * */
 
+
 #include "messageheader.h"
+#include "messagepayload.h"
+#include "messagefooter.h"
 
 
 #endif // MESSAGE_H

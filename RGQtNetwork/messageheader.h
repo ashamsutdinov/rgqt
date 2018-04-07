@@ -20,6 +20,7 @@
 #include "privatemessageheader.h"
 
 
+
 struct RGQTNETWORK MessageHeader
 {
     PublicMessageHeader     Public;

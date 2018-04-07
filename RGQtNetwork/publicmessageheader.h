@@ -15,19 +15,36 @@
 
 
 #include "rgqtnetwork_global.h"
+#include "protocolversion.h"
 
 
 #define MESSAGE_PREFIX  0xFF
 
+#define APP_MESSAGE_FLAG        BIT_0
+#define HEADER_ENCRYPTED_FLAG   BIT_1
+#define PAYLOAD_ENCRYPTED_FLAG  BIT_2
+#define PAYLOAD_COMPRESSED_FLAG BIT_3
+
+
 struct RGQTNETWORK PublicMessageHeader
 {
     byte    Prefix;
+
     byte    ProtocolVersion;
-    flags   Flags;
+
+    OBJECT_FLAGS(Flags)
+
     byte    Reserved;
+
+    bool isAppMessage() const { return hasFlag(APP_MESSAGE_FLAG); }
+    bool isSessionMessage() const { return !isAppMessage(); }
+    bool isHeaderEncrypted() const { return hasFlag(HEADER_ENCRYPTED_FLAG); }
+    bool isPayloadEncrypted() const { return hasFlag(PAYLOAD_ENCRYPTED_FLAG); }
+    bool isPayloadCompressed() const { return hasFlag(PAYLOAD_COMPRESSED_FLAG); }
 };
 
 typedef PublicMessageHeader*                    _PPublicMessageHeader;
+typedef PublicMessageHeader&                    RPublicMessageHeader;
 typedef std::unique_ptr<PublicMessageHeader>    PPublicMessageHeader;
 
 

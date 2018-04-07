@@ -36,7 +36,8 @@ HEADERS += \
     messagepayload.h \
     messagefooter.h \
     publicmessageheader.h \
-    privatemessageheader.h
+    privatemessageheader.h \
+    protocolversion.h
 
 
 # Sources

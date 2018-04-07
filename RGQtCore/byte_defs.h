@@ -73,9 +73,15 @@ typedef BYTE_8      byte_8;
 #define BIT_30      0x40000000
 #define BIT_31      0x80000000
 
-#define HAS_FLAG(Flag, Flags)       Flags & Flag == Flag
-#define ADD_FLAG(Flag, Flags)       Flags |= Flag
-#define REMOVE_FLAG(Flag, Flags)    Flags = (Flags | Flag) ^ Flag
+#define HAS_FLAG(Flags, Flag)       ((Flags) & (Flag)) == (Flag)
+#define ADD_FLAG(Flags, Flag)       (Flags) |= Flag
+#define REMOVE_FLAG(Flags, Flag)    (Flags) = (((Flags) | (Flag)) ^ (Flag))
+
+#define OBJECT_FLAGS(Flags) \
+    flags Flags; \
+    bool hasFlag(flags f) const { return HAS_FLAG(Flags, f); } \
+    void setFlag(flags f) { ADD_FLAG(Flags, f); } \
+    void removeFlag(flags f) { REMOVE_FLAG(Flags, f); }
 
 
 #endif // BYTE_DEFS_H
