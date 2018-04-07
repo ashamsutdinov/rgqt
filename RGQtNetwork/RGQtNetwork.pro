@@ -30,13 +30,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Headers
 HEADERS += \
-        rgqtnetwork_global.h \
+    rgqtnetwork_global.h \
     messageheader.h \
-    message.h
+    message.h \
+    messagepayload.h \
+    messagefooter.h
 
 
 # Sources
-SOURCES +=
+SOURCES += \
+    messagefooter.cpp
 
 
 # Unix-specific stuff

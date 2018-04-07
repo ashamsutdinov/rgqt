@@ -1,14 +1,28 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
+/*
+ * RGQt Message definition
+ *
+ * Created: 2018-04-07
+ * Last update: 2018-04-07 by ashamsutdinov
+ *
+ *
+ * Revision history:
+ *
+ * 2018-04-07   ashamsutdinov       Initial version, message structure description
+ * */
+
+
 #include "rgqtnetwork_global.h"
+
 
 /*
  * Message structure:
  *
  *
  * Public header (H1, always 12 bytes):
- *  byte 0 (H1.0)   :   prefix - all "1"s
+ *  byte 0 (H1.0)   :   prefix (constant, 0xFF)
  *
  *  byte 1 (H1.1)   :   protocol version (0 to 255)
  *
@@ -49,16 +63,20 @@
  *  [optional] next 2 bytes (H2.34-35)  :   encryption flags (if H1.2.2 == 1)
  *  [optional] next 2 bytes (H2.36-37)  :   compression algorythm (if H1.2.3 == 1)
  *  [optional] next 2 bytes (H2.38-39)  :   compression flags (if H1.2.3 == 1)
- *  [optional] next 2 bytes (H2.40-43)  :   extra flags (if H1.2.7 == 1)
- *  [optional] next 2 bytes (H2.44-45)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
+ *  [optional] next 2 bytes (H2.40-42)  :   extra flags (if H1.2.7 == 1)
+ *  [optional] next 2 bytes (H2.43-44)  :   metadata size (if H1.2.8 == 1, 0 to 65536)
  *  [optional] next 4 to 65536 bytes (H2.46-*)  :   metadata (if H1.2.8 == 1, min 4 max 65536 bytes)
  *
  *
- * Payload data (PL, 0 to H2.4-7):
- *  bytes 0 to H2.4-7 (PL)  :   payload
+ * Payload data (PL, 0 to [H2.4-7] bytes):
+ *  bytes 0 to [H2.4-7] (PL)    :   payload data
  *
  *
- * Footer:
+ * Footer (FT, 4 bytes):
+ *  byte 0 (FT.0)   :   payload data checksum
+ *  byte 1 (FT.1)   :   reserved
+ *  byte 2 (FT.2)   :   reserved
+ *  byte 3 (FT.3)   :   end-of-message suffix (constant, 0x00)
  *
  * */
 

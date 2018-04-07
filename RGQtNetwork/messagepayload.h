@@ -1,0 +1,4 @@
+#ifndef MESSAGEPAYLOAD_H
+#define MESSAGEPAYLOAD_H
+
+#endif // MESSAGEPAYLOAD_H

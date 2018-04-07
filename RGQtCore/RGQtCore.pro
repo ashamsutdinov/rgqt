@@ -35,7 +35,9 @@ HEADERS += \
     rgqtcore.h \
     rgqtobject.h \
     rgqtcomponent.h \
-    rgqtlog.h
+    rgqtlog.h \
+    pimpl_defs.h \
+    byte_defs.h
 
 
 # Sources
