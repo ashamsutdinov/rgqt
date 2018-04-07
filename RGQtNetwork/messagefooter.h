@@ -15,6 +15,7 @@
 
 
 #include "rgqtnetwork_global.h"
+#include "io.h"
 
 
 #define MESSAGE_SUFFIX  0x00
@@ -30,12 +31,16 @@ struct RGQTNETWORK MessageFooter
     byte    Suffix;
 };
 
-typedef MessageFooter*                  _PMessageFooter;
-typedef MessageFooter&                  RMessageFooter;
-typedef std::unique_ptr<MessageFooter>  PMessageFooter;
+typedef MessageFooter*  PMessageFooter;
 
 
 extern RGQTNETWORK MessageFooter gEmptyMessageFooter;
 
+
+void RGQTNETWORK ReadMessageFooter(const PBuffer buffer, BufferSize footerOffset, MessageFooter& footer);
+void RGQTNETWORK ReadMessageFooter(const PBuffer buffer, MessageFooter& footer);
+
+void RGQTNETWORK ConvertMessageFooter(const PBuffer buffer, BufferSize footerOffset, MessageFooter*& footer);
+void RGQTNETWORK ConvertMessageFooter(const PBuffer buffer, MessageFooter*& footer);
 
 #endif // MESSAGEFOOTER_H

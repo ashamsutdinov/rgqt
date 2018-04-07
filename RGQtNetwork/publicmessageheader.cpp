@@ -1,6 +1,4 @@
 #include "publicmessageheader.h"
-#include "io.h"
-
 
 PublicMessageHeader gEmptyPublicMessageHeader ={
     MESSAGE_PREFIX,
@@ -9,7 +7,22 @@ PublicMessageHeader gEmptyPublicMessageHeader ={
     BYTE_ZERO
 };
 
+void RGQTNETWORK ReadPublicMessageHeader(const PBuffer buffer, BufferSize publicHeaderOffset, PublicMessageHeader& publicHeader)
+{
+    ReadObject(buffer, publicHeaderOffset, publicHeader);
+}
 
-template RGQTNETWORK void ReadObject<PublicMessageHeader>(PBuffer, BufferSize, PublicMessageHeader&);
+void RGQTNETWORK ReadPublicMessageHeader(const PBuffer buffer, PublicMessageHeader& publicHeader)
+{
+    ReadPublicMessageHeader(buffer, BUFFER_START, publicHeader);
+}
 
-template RGQTNETWORK PublicMessageHeader ReadObject<PublicMessageHeader>(PBuffer, BufferSize);
+void RGQTNETWORK ConvertPublicMessageHeader(const PBuffer buffer, BufferSize publicHeaderOffset, PublicMessageHeader*& publicHeader)
+{
+    ConvertObject(buffer, publicHeaderOffset, publicHeader);
+}
+
+void RGQTNETWORK ConvertPublicMessageHeader(const PBuffer buffer, PublicMessageHeader*& publicHeader)
+{
+    ConvertPublicMessageHeader(buffer, BUFFER_START, publicHeader);
+}

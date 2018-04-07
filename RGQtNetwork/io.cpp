@@ -1,14 +1,6 @@
 #include "io.h"
 
-
-template<typename T> void ReadObject(PBuffer data, BufferSize size, T& object)
+const PBuffer RGQTNETWORK OffsetBuffer(const PBuffer data, BufferSize offset)
 {
-    memcpy(&object, data, size);
-}
-
-template<typename T> T ReadObject(PBuffer data, BufferSize size)
-{
-    T result;
-    ReadObject(data, size, result);
-    return result;
+    return reinterpret_cast<PBuffer>((reinterpret_cast<_byte>(data) + offset));
 }

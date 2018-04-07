@@ -16,6 +16,7 @@
 
 #include "rgqtnetwork_global.h"
 #include "protocolversion.h"
+#include "io.h"
 
 
 #define MESSAGE_PREFIX  0xFF
@@ -43,12 +44,18 @@ struct RGQTNETWORK PublicMessageHeader
     bool isPayloadCompressed() const { return hasFlag(PAYLOAD_COMPRESSED_FLAG); }
 };
 
-typedef PublicMessageHeader*                    _PPublicMessageHeader;
-typedef PublicMessageHeader&                    RPublicMessageHeader;
-typedef std::unique_ptr<PublicMessageHeader>    PPublicMessageHeader;
+
+typedef PublicMessageHeader*                    PPublicMessageHeader;
 
 
 extern RGQTNETWORK PublicMessageHeader gEmptyPublicMessageHeader;
+
+
+void RGQTNETWORK ReadPublicMessageHeader(const PBuffer buffer, BufferSize publicHeaderOffset, PublicMessageHeader& publicHeader);
+void RGQTNETWORK ReadPublicMessageHeader(const PBuffer buffer, PublicMessageHeader& publicHeader);
+
+void RGQTNETWORK ConvertPublicMessageHeader(const PBuffer buffer, BufferSize publicHeaderOffset, PublicMessageHeader*& publicHeader);
+void RGQTNETWORK ConvertPublicMessageHeader(const PBuffer buffer, PublicMessageHeader*& publicHeader);
 
 
 #endif // PUBLICMESSAGEHEADER_H

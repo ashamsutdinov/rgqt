@@ -1,5 +1,4 @@
 #include "messagefooter.h"
-#include "io.h"
 
 MessageFooter gEmptyMessageFooter = {
     BYTE_ZERO,
@@ -9,6 +8,22 @@ MessageFooter gEmptyMessageFooter = {
 };
 
 
-template RGQTNETWORK void ReadObject<MessageFooter>(PBuffer, BufferSize, MessageFooter&);
+void RGQTNETWORK ReadMessageFooter(const PBuffer buffer, BufferSize footerOffset, MessageFooter& footer)
+{
+    ReadObject(buffer, footerOffset, footer);
+}
 
-template RGQTNETWORK MessageFooter ReadObject<MessageFooter>(PBuffer, BufferSize);
+void RGQTNETWORK ReadMessageFooter(const PBuffer buffer, MessageFooter& footer)
+{
+    ReadMessageFooter(buffer, BUFFER_START, footer);
+}
+
+void RGQTNETWORK ConvertMessageFooter(const PBuffer buffer, BufferSize footerOffset, MessageFooter*& footer)
+{
+    ConvertObject(buffer, footerOffset, footer);
+}
+
+void RGQTNETWORK ConvertMessageFooter(const PBuffer buffer, MessageFooter*& footer)
+{
+    ConvertMessageFooter(buffer, BUFFER_START, footer);
+}
